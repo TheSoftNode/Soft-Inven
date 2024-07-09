@@ -7,7 +7,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Introduction
@@ -26,9 +25,12 @@ The SoftInven is designed for a production firm that supplies products to shops.
 - **Frontend:**
   - Blazor Server
   - Bootstrap
+  - Syncfusion components
 - **Backend:**
   - C#
   - .NET Core
+  - Entity Framework core
+  - MediatR
 - **Database:**
   - SQL Server
 - **Real-time Communication:**
@@ -39,12 +41,12 @@ The SoftInven is designed for a production firm that supplies products to shops.
   - AWS
 
 ## Installation
-To set up the Inventory Management System locally, follow these steps:
+To set up the SoftInven locally, follow these steps:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/inventory-management-system.git
-   cd inventory-management-system
+   git clone https://github.com/TheSoftNode/Soft-Inven.git
+   cd Soft-Inven
    ```
 
 2. **Set up the database:**
@@ -61,11 +63,11 @@ To set up the Inventory Management System locally, follow these steps:
 4. **Docker setup (Optional):**
    - Build the Docker image:
      ```sh
-     docker build -t inventory-management-system .
+     docker build -t Soft-Inven .
      ```
    - Run the Docker container:
      ```sh
-     docker run -d -p 8080:80 inventory-management-system
+     docker run -d -p 8080:80 Soft-Inven
      ```
 
 ## Usage
@@ -85,7 +87,7 @@ To set up the Inventory Management System locally, follow these steps:
    - Access the reports section to generate and view detailed inventory and sales reports.
 
 ## Contributing
-We welcome contributions to enhance the Inventory Management System. To contribute, follow these steps:
+I welcome contributions to enhance the SoftInven. To contribute, follow these steps:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature/your-feature-name`).
@@ -94,9 +96,6 @@ We welcome contributions to enhance the Inventory Management System. To contribu
 5. Open a pull request.
 
 Please ensure your code adheres to the project's coding standards and includes relevant tests.
-
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 For any inquiries or feedback, please contact:
