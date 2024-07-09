@@ -1,0 +1,72 @@
+﻿@using System.Net.Http
+@using System.Net.Http.Json
+@using MediatR
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using static Microsoft.AspNetCore.Components.Web.RenderMode
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.Extensions.DependencyInjection
+@using Application.Service.Orders.Queries
+@using Microsoft.JSInterop
+@using NetcodeHub.Packages.Extensions.LocalStorage
+@using WebUI
+@using WebUI.Components
+@using WebUI.Components.Layout
+@using Microsoft.AspNetCore.Components.Authorization
+@using WebUI.Components.Layout.Identity
+@using WebUI.Components.Pages.Identity
+@using Application.Extension
+
+@using Application.DTO.Request.Identity
+@using Application.Service.Identity
+@using NetcodeHub.Packages.Components.Validations.OnInput
+@using Microsoft.AspNetCore.Authorization
+@using WebUI.Components.Pages.General
+@using NetcodeHub.Packages.UI.Templates.Breeze
+@using WebUI.Components.Layout.Sidebar
+@using WebUI.Components.Layout.Navigationbar
+@using NetcodeHub.Packages.Components
+@using Application.DTO.Response.Products
+@using Application.DTO.Request.Products
+@using Mapster
+@using NetcodeHub.Packages.Components.BreadCrumb
+@using NetcodeHub.Packages.Components.Modal
+@using NetcodeHub.Packages.Components.Toast
+@using Syncfusion.Blazor.Navigations
+@using Application.DTO.Response
+@using NetcodeHub.Packages.Components.DataGrid
+@using NetcodeHub.Packages.Components.FileUpload
+@using Syncfusion.Blazor.Grids
+@using Application.DTO.Request.Orders
+@using System.Security.Claims
+@using WebUI.Hubs
+@using WebUI.States
+@using WebUI.States.Administration
+@using WebUI.States.User
+@using Application.Service.Orders
+@using Application.DTO.Request.ActivityTracker
+@using Application.Service.Products.Commands.Products
+@using Application.Service.Products.Queries.Categories
+@using Application.Service.Products.Queries.Locations
+@using Application.Service.Products.Queries.Products
+@using Microsoft.AspNetCore.SignalR.Client
+@using Application.DTO.Response.Orders
+@using Application.Service.Orders.Commands
+@using Application.Service.Products.Commands.Locations
+@using Application.Service.Products.Commands.Categories
+@using Syncfusion.Blazor.Notifications
+
+
+@inject NavigationManager NavManager
+@inject AuthenticationStateProvider AuthState
+@inject ChangePasswordState passwordState
+@inject SoftHubConnectionService softHubConnectionService
+@inject IAccountService accountService
+@inject IServiceProvider serviceProvider
+@inject IJSRuntime js
+@inject GenericHomeHeaderState homeGenericState
+@inject UserActiveOrderCountState userState
+@inject AdminActiveOrderCountState adminState
+@inject ICustomAuthorizationService customAuthorizationService
+@inject ILocalStorageService localStorageService

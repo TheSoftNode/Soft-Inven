@@ -1,0 +1,127 @@
+﻿@page "/Account/Register"
+
+@* <section class="vh-100 vw-100" style="background-color: #9A616D;"> *@
+<section class="vh-100 vw-100" style="background-color: #fff">
+	<div class="container py-3 h-100">
+		<div class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col col-md-7">
+				<div class="card border-primary shadow-lg" style="border-radius: 1.5rem;">
+					<div class="row g-0">
+						<div class="col-md-12 col-lg-12 d-flex align-items-center ">
+							<div class="card-body">
+
+								<EditForm Model="RegisterModel" method="post" OnValidSubmit="RegisterAsync" FormName="login" Enhance>
+
+									<DataAnnotationsValidator />
+									@if (@ErrorMessage != "")
+									{
+										<div class="alert alert-danger">
+											@ErrorMessage
+										</div>
+									}
+
+									<div class="d-flex justify-content-center align-items-center mb-5 pb-1">
+										<i class="fas fa-cubes fa-2x me-3" style="color:#ff6219;"></i>
+										<span class="h1 fw-bold small mb-0 b_1 b-r">Soft<span class="b2 b2-r text-primary">Inven</span></span>
+									</div>
+
+									<h5 class="fw-medium mb-3 text-center pb-3" style="letter-spacing: 1px; color: rgb(55, 2, 105);">Register</h5>
+
+									<div data-mdb-input-init class="form-outline mb-7">
+										<label for="name" class="form-label">Shop Name</label>
+										<InputText @bind-Value="RegisterModel.Name" class="form-control form-control-lg rounded-2" autocomplete="shop-name" aria-required="true" placeholder="Brewries" />
+										<ValidationMessage class="mt-2 text-danger small" For="@(() => RegisterModel.Name)" />
+									</div>
+
+									<div data-mdb-input-init class="form-outline mb-7">
+										<label for="email" class="form-label">Email Address</label>
+										<InputText @bind-Value="RegisterModel.Email" class="form-control form-control-lg rounded-2" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+										<ValidationMessage class="mt-2 text-danger small" For="@(() => RegisterModel.Email)" />
+									</div>
+
+									<div data-mdb-input-init class="form-outline mb-7">
+										<label for="password" class="form-label">Password</label>
+										<InputText type="password"
+												   @bind-Value="RegisterModel.Password"
+												   class="form-control form-control-lg rounded-2 "
+												   autocomplete="current-password"
+												   aria-required="true" placeholder="password" />
+										<ValidationMessage class="mt-2 text-danger small" For="@(() => RegisterModel.Password)" />
+									</div>
+
+									<div data-mdb-input-init class="form-outline mb-7">
+										<label for="confirmPassword" class="form-label">Confirm Password</label>
+										<InputText type="password"
+												   @bind-Value="RegisterModel.ConfirmPassword"
+												   class="form-control form-control-lg rounded-2 "
+												   autocomplete="confirm-password"
+												   aria-required="true" placeholder="confirm password" />
+										<ValidationMessage class="mt-2 text-danger small" For="@(() => RegisterModel.ConfirmPassword)" />
+									</div>
+
+									<div class="pt-1 mb-5">
+										<button class="btn btn-primary rounded-1 btn-block" type="submit">Register</button>
+									</div>
+
+									<p class="mb-0 pb-lg-2 text-center" style="color: #393f81;">
+										Already have an account?
+										<a href="Account/Login" class="small" style="color:#ff6219;">Go to Login</a>
+									</p>
+
+									@* <div class="d-flex justify-content-between">
+										<span>
+											<a href="#!" class="small text-muted">Terms of use.</a>
+											<a href="#!" class="small text-muted">Privacy policy</a>
+										</span>
+									</div> *@
+
+								</EditForm>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@code {
+	string ErrorMessage = "";
+	public bool IsBusy { get; set; } = false;
+
+	[SupplyParameterFromForm]
+	private CreateUserRequestDTO RegisterModel { get; set; } = new();
+
+	private async Task RegisterAsync()
+	{
+		if (IsBusy) return;
+		ErrorMessage = "";
+		IsBusy = true;
+
+		var response = await accountService.CreateUserAsync(RegisterModel);
+		if (!response.Flag)
+		{
+			IsBusy = false;
+			ErrorMessage = response.Message;
+			return;
+		}
+		IsBusy = false;
+		NavManager.NavigateTo(uri: "Account/Login", true);
+	}
+
+	[CascadingParameter]
+	public Task<AuthenticationState>? ClientAuthState { get; set; }
+
+
+	protected override async Task OnInitializedAsync()
+	{
+		try
+		{
+			if ((await ClientAuthState!).User.Identity!.IsAuthenticated == true)
+				NavManager.NavigateTo("Account/Login", false, true);
+		}
+		catch { }
+	}
+}
+
