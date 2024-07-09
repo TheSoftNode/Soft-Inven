@@ -1,0 +1,23 @@
+  Determining projects to restore...
+  Writing C:\Users\USER\AppData\Local\Temp\tmpephoqx.tmp
+info : X.509 certificate chain validation will use the default trust store selected by .NET for code signing.
+info : X.509 certificate chain validation will use the default trust store selected by .NET for timestamping.
+info : Adding PackageReference for package 'Microsoft.EntityFrameworkCore' into project 'C:\Users\USER\Desktop\Portfolio_projects\Inventory-Management\Infrastructure\Infrastructure.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/index.json 1150ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/0.0.1-alpha/3.1.3.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/0.0.1-alpha/3.1.3.json 598ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/3.1.4/6.0.0-preview.7.21378.4.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/3.1.4/6.0.0-preview.7.21378.4.json 606ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/6.0.0-rc.1.21452.10/8.0.0-preview.2.23128.3.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/6.0.0-rc.1.21452.10/8.0.0-preview.2.23128.3.json 568ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/8.0.0-preview.3.23174.2/9.0.0-preview.5.24306.3.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/microsoft.entityframeworkcore/page/8.0.0-preview.3.23174.2/9.0.0-preview.5.24306.3.json 600ms
+info : Restoring packages for C:\Users\USER\Desktop\Portfolio_projects\Inventory-Management\Infrastructure\Infrastructure.csproj...
+info :   CACHE https://api.nuget.org/v3/vulnerabilities/index.json
+info :   CACHE https://api.nuget.org/v3-vulnerabilities/2024.06.12.23.21.02/vulnerability.base.json
+info :   CACHE https://api.nuget.org/v3-vulnerabilities/2024.06.12.23.21.02/2024.06.13.11.21.03/vulnerability.update.json
+info : Package 'Microsoft.EntityFrameworkCore' is compatible with all the specified frameworks in project 'C:\Users\USER\Desktop\Portfolio_projects\Inventory-Management\Infrastructure\Infrastructure.csproj'.
+info : PackageReference for package 'Microsoft.EntityFrameworkCore' version '8.0.6' added to file 'C:\Users\USER\Desktop\Portfolio_projects\Inventory-Management\Infrastructure\Infrastructure.csproj'.
+info : Writing assets file to disk. Path: C:\Users\USER\Desktop\Portfolio_projects\Inventory-Management\Infrastructure\obj\project.assets.json
+log  : Restored C:\Users\USER\Desktop\Portfolio_projects\Inventory-Management\Infrastructure\Infrastructure.csproj (in 298 ms).
