@@ -1,19 +1,34 @@
-version: '3.8'
+version: '3.4'
 
 services:
-  webui:
-    build:
-      context: .
-      dockerfile: WebUI/Dockerfile
-    ports:
-      - "8083:5257"  # Map host port 8080 to container port 80
-    depends_on:
-      - database
 
-  database:
+  sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
     environment:
-      SA_PASSWORD: "Your_password123"
+      SA_PASSWORD: "softinven1234"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
+    volumes:
+      - sqlserverdata:/var/opt/mssql    
+
+  webui:
+    image: ${DOCKER_REGISTRY-}webui
+    build:
+      context: .
+      dockerfile: WebUI/Dockerfile
+    container_name: softinven
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=softinven;User=sa;Password=softinven1234;
+    depends_on:
+      - sqlserver
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - .:/app
+
+volumes:
+  sqlserverdata:
