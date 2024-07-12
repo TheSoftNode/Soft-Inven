@@ -2,17 +2,17 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
+ENV ASPNETCORE_ENVIRONMENT Development
 WORKDIR /app
-EXPOSE 5257
+EXPOSE 8080
 EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["WebUI/WebUI.csproj", "WebUI/"]
-COPY ["Application/Application.csproj", "Application/"]
-COPY ["Domain/Domain.csproj", "Domain/"]
 COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
+COPY ["Application/Application.csproj", "Application/"]
 RUN dotnet restore "./WebUI/WebUI.csproj"
 COPY . .
 WORKDIR "/src/WebUI"
@@ -25,4 +25,5 @@ RUN dotnet publish "./WebUI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:U
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WebUI.dll"]
+ENTRYPOINT ["dotnet", "ef", "database", "update", "--no-build", "--prefix-output"]
+CMD ["dotnet", "WebUI.dll", "--urls", "http://0.0.0.0","--environment=Development"]
