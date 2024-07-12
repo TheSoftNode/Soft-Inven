@@ -265,10 +265,13 @@
 		{
 			await ToastComponent!.ShowSuccessToast("Success", result.Message);
 			await GetUsersWithClaims();
+			Loading = false;
+			CloseModalDialog();
 		}
 		else
 		{
 			await ToastComponent!.ShowErrorToast("Error", result.Message);
+			Loading = false;
 		}
 	}
 
