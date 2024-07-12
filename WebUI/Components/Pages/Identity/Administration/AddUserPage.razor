@@ -29,9 +29,9 @@
 									<option value="@policy">@policy</option>
 								}
 							</InputSelect>
-							<FloatingText Label="User Password" Type="@passwordState.PasswordType" class="form-control" @bind-Value="UserModel.Password" />
-							<FloatingText Label="Confirm Password" Type="@passwordState.PasswordType" class="form-control" @bind-Value="UserModel.ConfirmPassword" />
-							<a class="btn btn-link text-decoration-none float-end" style="margin-top: 20px" @onclick="ChangePasswordType"><small>@passwordState.DisplayText</small></a>
+							<FloatingText Label="User Password" Type="@passwordState.PasswordType" class="form-control mb-3" @bind-Value="UserModel.Password" Placeholder="password" />
+							<FloatingText Label="Confirm Password" Type="@passwordState.PasswordType" class="form-control mb-3" @bind-Value="UserModel.ConfirmPassword" Placeholder="confirm password" />
+							<a class="btn btn-link text-decoration-none float-end" style="margin-top: 20px" @onclick="ChangePasswordType"><small><b>@passwordState.DisplayText</b></small></a>
 							<div class="form-group align-content-end">
 								@if (Loading)
 								{
@@ -39,14 +39,14 @@
 								}
 								else
 								{
-									<button class="float-end btn-success mt-4 w-50" type="submit">Create User</button>
+									<button class="float-end btn-success mt-4 w-50 p-2 rounded-lg" type="submit">Create User</button>
 								}
 							</div>
 							<hr class="text-primary" />
 						</div>
 
 						<div>
-							<ValidationSummary class="form-control text-danger text-decoration-none p-4" style="list-style: lower-latin; text-align:left"  />
+							<ValidationSummary class="form-control text-danger text-decoration-none p-4" style="list-style: lower-latin; text-align:left; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px;"  />
 						</div>
 					</div>
 				</EditForm>
