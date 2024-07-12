@@ -14,7 +14,8 @@ public static class ServiceContainer
 {
     public static IServiceCollection AddInfrastructureService(this IServiceCollection services, IConfiguration config)
     {
-        services.AddDbContext<AppDbContext>(o => o.UseSqlServer(config.GetConnectionString("Default")), ServiceLifetime.Scoped);
+        services.AddDbContext<AppDbContext>(o => o.UseSqlite(config.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
+        //services.AddDbContext<AppDbContext>(o => o.UseSqlServer(config.GetConnectionString("Default")), ServiceLifetime.Scoped);
 
         services.AddAuthentication(options =>
         {

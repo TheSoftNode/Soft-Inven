@@ -42,11 +42,11 @@ public class Account
 
     private async Task<ServiceResponse> CreateUserClaims(CreateUserRequestDTO model)
     {
-        //if (string.IsNullOrEmpty(model.Policy)) return new ServiceResponse(false, "No policy specified");
-        if (string.IsNullOrEmpty(model.Policy))
-        {
-            model.Policy = Policy.UserPolicy;
-        }
+        if (string.IsNullOrEmpty(model.Policy)) return new ServiceResponse(false, "No policy specified");
+        //if (string.IsNullOrEmpty(model.Policy))
+        //{
+        //    model.Policy = Policy.UserPolicy;
+        //}
 
         Claim[] userClaims = [];
         if (model.Policy.Equals(Policy.AdminPolicy, StringComparison.OrdinalIgnoreCase))
