@@ -192,13 +192,15 @@
 				UserOrders = (await mediator.Send(new GetOrdersByIdQuery(userId)));
 				GetClientSections();
 			}
-			else if (User.Claims.FirstOrDefault(_ => _.Type == ClaimTypes.Role)!.Value.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+			else if (User.Claims.FirstOrDefault(_ => _.Type == ClaimTypes.Role)!.Value.Equals("Admin", StringComparison.OrdinalIgnoreCase)
+				|| User.Claims.FirstOrDefault(_ => _.Type == ClaimTypes.Role)!.Value.Equals("Manager", StringComparison.OrdinalIgnoreCase))
 			{
 				using var scope = serviceProvider.CreateScope();
 				var mediator = scope.ServiceProvider.GetRequiredService<IMediator>();
 				AdminOrders = (await mediator.Send(new GetAllOrdersQuery()));
 				GetAdminSections();
 			}
+			
 		}
 		catch {}
 	}
